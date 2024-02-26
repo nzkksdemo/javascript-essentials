@@ -1,6 +1,12 @@
 const submitButton = document.getElementById('submitBtn');
 submitButton.onclick = submitFeedback;
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      submitFeedback();
+    }
+});
+
 function submitFeedback() {
     const username = document.getElementById('name').value;
     const age = document.getElementById('age').value;
