@@ -2,9 +2,14 @@ function showweatherDetails(event) {
     event.preventDefault();
 
     const city = document.getElementById('city').value;
+    const latitude = document.getElementById('latitude').value;
+    const longitude = document.getElementById('longitude').value;
     const apiKey = '83d714c0ee23c32c668e80dfffac0737'; // Replace 'YOUR_API_KEY' with your actual API key
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrlUsingCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrlUsingLatAndLon = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
+    const apiUrl = city !== '' ? apiUrlUsingCity : apiUrlUsingLatAndLon;
+    
     fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
@@ -21,4 +26,12 @@ function showweatherDetails(event) {
     });
 }
 
-document.getElementById('weatherForm').addEventListener('submit',showweatherDetails );
+function clearForm () {
+    document.getElementById('city').value = '';
+    document.getElementById('latitude').value = '';
+    document.getElementById('longitude').value = '';
+    document.getElementById('weatherInfo').innerHTML = '';
+}
+
+document.getElementById('weatherForm').addEventListener('submit', showweatherDetails );
+document.getElementById('resetBtn').addEventListener('click', clearForm );

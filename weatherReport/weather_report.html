@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weather Report</title>
+    <title>Weather Report</title>
 </head>
 <body>
-   <h1>Weather Report</h1>
+    <h1>Weather Report</h1>
+    
+    <form id="weatherForm">
+        <h2>By City:</h2>
+        <label for="city">Enter City:</label><br />
+        <input type="text" id="city" name="city"><br />
 
-  <form id="weatherForm">
-    <label for="city">Enter City:</label>
-    <input type="text" id="city" name="city">
-    <button type="submit">Get Weather</button>
-  </form>
+        <h2>OR by Latitude and longitude:</h2>
+        <label for="latitude">Enter Latitude:</label><br />
+        <input type="text" id="latitude" name="latitude"><br />
+        <label for="longitude">Enter Longitude:</label><br />
+        <input type="text" id="longitude" name="longitude"><br />
 
-  <div id="weatherInfo"></div>
-<script src="./weather_report.js"></script>
+        <button type="submit" style="margin-top:1.5rem;">Get Weather</button>
+        <button type="button" id="resetBtn">Reset</button>
+    </form>
+
+    <div id="weatherInfo"></div>
+    <script src="./weather_report.js"></script>
 </body>
 </html>
